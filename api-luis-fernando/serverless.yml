@@ -1,0 +1,110 @@
+service: api-serverless
+provider:
+    name: aws
+    runtime: nodejs8.10
+    memorySize: 128
+    timeout: 30
+    stage: pro
+    region: us-east-1
+functions:
+    users:
+        handler: handler.users
+        events:
+            - http:
+                path: users
+                method: get
+                cors: true
+            - http:
+                path: users/{id}
+                method: get
+                cors: true
+            - http:
+                path: users
+                method: post
+                cors: true
+
+
+    logs:
+        handler: handler.logs
+        events:
+            - http:
+                path: logs
+                method: get
+                cors: true
+            - http:
+                path: logs/{id}
+                method: get
+                cors: true
+            - http:
+                path: logs
+                method: post
+                cors: true
+            - http:
+                path: logs
+                method: put
+                cors: true
+            - http:
+                path: logs
+                method: delete
+                cors: true
+
+    posts:
+        handler: handler.posts
+        events:
+            - http:
+                path: posts
+                method: get
+                cors: true
+            - http:
+                path: posts/{id}
+                method: get
+                cors: true
+            - http:
+                path: posts
+                method: post
+                cors: true
+            - http:
+                path: posts
+                method: put
+                cors: true
+            - http:
+                path: posts
+                method: delete
+                cors: true
+
+    curtidas:
+        handler: handler.curtidas
+        events:
+            - http:
+                path: curtidas
+                method: get
+                cors: true
+            - http:
+                path: curtidas/{id}
+                method: get
+                cors: true
+            - http:
+                path: curtidas
+                method: post
+                cors: true
+
+    comentarios:
+        handler: handler.comentarios
+        events:
+            - http:
+                path: comentarios
+                method: get
+                cors: true
+            - http:
+                path: comentarios/{id}
+                method: get
+                cors: true
+            - http:
+                path: comentarios
+                method: post
+                cors: true
+
+    
+  
+plugins:
+    - serverless-offline
